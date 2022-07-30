@@ -48,7 +48,7 @@ namespace backend.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(Guid id, User user)
         {
-            if (id != user.UserId)
+            if (id != user.id)
             {
                 return BadRequest();
             }
@@ -82,7 +82,7 @@ namespace backend.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.UserId }, user);
+            return CreatedAtAction("GetUser", new { id = user.id }, user);
         }
 
         // DELETE: api/Users/5
@@ -103,7 +103,7 @@ namespace backend.Controllers
 
         private bool UserExists(Guid id)
         {
-            return _context.Users.Any(e => e.UserId == id);
+            return _context.Users.Any(e => e.id == id);
         }
     }
 }

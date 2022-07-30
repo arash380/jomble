@@ -27,7 +27,7 @@ public class JombleContext : DbContext
     //         StartDate =  DateTime.Now,
     //         EndDate =  DateTime.Now,
     //         Location = "4321 Giraffe St,Coquitlam,BC,Canada",
-    //         UserId = new Guid("86782f80-181b-4f40-8016-0800cfe42b13"),
+    //         id = new Guid("86782f80-181b-4f40-8016-0800cfe42b13"),
     //         Ended = false
     //        },
     //         new Event() {
@@ -37,7 +37,7 @@ public class JombleContext : DbContext
     //         EndDate =  DateTime.Now,
     //         Description = "Let's hang out!",
     //         Location = "1234 Monkey St,Burnaby,BC,Canada",
-    //         UserId = new Guid("86782f80-181b-4f40-8016-0800cfe42b13"),
+    //         id = new Guid("86782f80-181b-4f40-8016-0800cfe42b13"),
     //         Ended = false
     //        }
     //     };
@@ -48,7 +48,7 @@ public class JombleContext : DbContext
     {
         List<User> users = new List<User>() {
            new User() {
-            UserId = new Guid("d911c5bd-074e-492b-b389-c5fe413a874d"),
+            id = new Guid("d911c5bd-074e-492b-b389-c5fe413a874d"),
             FirstName = "Arash",
             LastName = "Saadati",
             Email = "1@1.com",
@@ -63,7 +63,7 @@ public class JombleContext : DbContext
     // {
     //     List<EventUser> eventUsers = new List<EventUser>() {
     //         new EventUser() {
-    //             UserId = new Guid("86782f80-181b-4f40-8016-0800cfe42b13"),
+    //             id = new Guid("86782f80-181b-4f40-8016-0800cfe42b13"),
     //             EventId = new Guid("38b47a67-d603-4dd5-befe-117f96d4c058"),
     //             Attended = false
     //        }
@@ -78,7 +78,7 @@ public class JombleContext : DbContext
     //        new Comment() {
     //            CommentId = new Guid("6d7b8602-e0fb-4685-949e-6f80c63ef57d"),
     //            EventId = new Guid("38b47a67-d603-4dd5-befe-117f96d4c058"),
-    //            UserId = new Guid("86782f80-181b-4f40-8016-0800cfe42b13"),
+    //            id = new Guid("86782f80-181b-4f40-8016-0800cfe42b13"),
     //            SentAt = DateTime.Now,
     //            Message = "RIP!"
     //        }
@@ -90,9 +90,7 @@ public class JombleContext : DbContext
     {
         base.OnModelCreating(builder);
 
-        builder.Entity<User>().HasData(
-            GetSeedUsers()
-        );
+        builder.Entity<User>().HasData(GetSeedUsers());
         // builder.Entity<Event>().HasData(
         //     GetSeedEvents()
         // );
@@ -103,10 +101,10 @@ public class JombleContext : DbContext
         // builder.Entity<User>().HasMany(u => u.Events).WithMany(e => e.Users)
         //     .UsingEntity<EventUser>(
         //         j => j.HasOne(eu => eu.Event).WithMany(e => e.EventsUsers).HasForeignKey(eu => eu.EventId),
-        //         j => j.HasOne(eu => eu.User).WithMany(u => u.EventsUsers).HasForeignKey(eu => eu.UserId),
+        //         j => j.HasOne(eu => eu.User).WithMany(u => u.EventsUsers).HasForeignKey(eu => eu.id),
         //         j =>
         //         {
-        //             j.HasKey(eu => new { eu.EventId, eu.UserId });
+        //             j.HasKey(eu => new { eu.EventId, eu.id });
         //             j.HasData(GetSeedEventUsers());
         //         }
         //         );

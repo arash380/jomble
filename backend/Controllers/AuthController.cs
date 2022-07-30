@@ -135,7 +135,7 @@ namespace backend.Controllers
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim("userId", user.UserId.ToString()),
+                    new Claim("id", user.id.ToString()),
                     new Claim(JwtRegisteredClaimNames.Email, user.Email!),
                     new Claim(JwtRegisteredClaimNames.Sub, user.Email!),
                     new Claim("firstName", user.FirstName!),
