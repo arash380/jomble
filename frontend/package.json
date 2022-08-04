@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "@mui/material": "^5.9.3",
-    "arash-react-components": "^1.1.0",
+    "arash-react-components": "^1.2.2",
     "axios": "^0.27.2",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
