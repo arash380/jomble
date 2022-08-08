@@ -40,7 +40,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 0 4.5rem;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .right > * {
@@ -48,5 +48,10 @@
 }
 
 .right > p {
-  font-size: 36px;
+  font-size: 2.2em;
+}
+
+.right strong {
+  font-weight: 900;
+  text-shadow: 2px 2px var(--arash-black-clr);
 }
