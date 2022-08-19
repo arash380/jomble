@@ -29,6 +29,11 @@
   background-color: var(--arash-white-clr);
   flex-basis: 33.333%;
   padding: 1.5rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .right {

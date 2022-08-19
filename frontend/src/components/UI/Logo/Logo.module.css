@@ -1,0 +1,11 @@
+.root {
+  height: 35px;
+  aspect-ratio: 1/1;
+  background-color: var(--arash-primary-clr);
+
+  display: grid;
+  place-items: center;
+  color: var(--arash-white-clr);
+  font-weight: bold;
+  font-size: 25px;
+}
