@@ -11,7 +11,7 @@ public class JombleContext : DbContext
 
     }
 
-    // public DbSet<Event>? Events { get; set; }
+    public DbSet<Job>? Jobs { get; set; }
     public DbSet<User>? Users { get; set; }
     // public DbSet<EventUser>? EventUser { get; set; }
     // public DbSet<Comment>? Comments { get; set; }
@@ -58,42 +58,25 @@ public class JombleContext : DbContext
         return users;
     }
 
-
-    // public static List<EventUser> GetSeedEventUsers()
-    // {
-    //     List<EventUser> eventUsers = new List<EventUser>() {
-    //         new EventUser() {
-    //             id = new Guid("86782f80-181b-4f40-8016-0800cfe42b13"),
-    //             EventId = new Guid("38b47a67-d603-4dd5-befe-117f96d4c058"),
-    //             Attended = false
-    //        }
-    //     };
-    //     return eventUsers;
-    // }
-
-
-    // public static List<Comment> GetSeedComments()
-    // {
-    //     List<Comment> comments = new List<Comment>() {
-    //        new Comment() {
-    //            CommentId = new Guid("6d7b8602-e0fb-4685-949e-6f80c63ef57d"),
-    //            EventId = new Guid("38b47a67-d603-4dd5-befe-117f96d4c058"),
-    //            id = new Guid("86782f80-181b-4f40-8016-0800cfe42b13"),
-    //            SentAt = DateTime.Now,
-    //            Message = "RIP!"
-    //        }
-    //     };
-    //     return comments;
-    // }
+    public static List<Job> GetSeedJobs()
+    {
+        List<Job> jobs = new List<Job>() {
+           new Job() {
+            id = new Guid("d911c5bd-074e-492b-b389-c5fe413a874c"),
+            Description="A random description",
+            ImgUrl="https://resources.workable.com/wp-content/uploads/2018/01/internal-hiring-featured.png",
+            Title="Fry cook at the Krusty Krab"
+           }
+        };
+        return jobs;
+    }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
 
         builder.Entity<User>().HasData(GetSeedUsers());
-        // builder.Entity<Event>().HasData(
-        //     GetSeedEvents()
-        // );
+        builder.Entity<Job>().HasData(GetSeedJobs());
         // builder.Entity<Comment>().HasData(
         //     GetSeedComments()
         // );

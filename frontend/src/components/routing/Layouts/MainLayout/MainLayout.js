@@ -3,7 +3,7 @@ import classes from "./MainLayout.module.css";
 
 const MainLayout = () => (
   <section className={classes.root}>
-    TEST
+    Main layout container
     <Outlet />
   </section>
 );
