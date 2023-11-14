@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const fileToBase64 = (file) =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Navigate, Route, Routes as Switch } from "reac
 import AuthLayout from "./Layouts/AuthLayout/AuthLayout";
 import ProtectedRoute from "./ProtectedRoute";
 import Register from "../pages/Auth/Register";
-import Layout from "./Layouts/Layout/Layout";
+import MainLayout from "./Layouts/MainLayout/MainLayout";
 import Login from "../pages/Auth/Login";
 import Home from "../pages/Home/Home";
 import rd from "./routeData";
@@ -24,9 +24,7 @@ const Routes = () => (
       </Route>
 
       <Route element={<ProtectedRoute />}>
-        <Route
-        //  element={<Layout />}
-        >
+        <Route element={<MainLayout />}>
           <Route path={defaultRoute} element={<Home />} />
           <Route path={wildCard} element={<Navigate to={defaultRoute} />} />
         </Route>
