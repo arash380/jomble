@@ -23,11 +23,11 @@ namespace backend.Controllers
         }
 
         // GET: api/Users
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
-        {
-            return await _context.Users.ToListAsync();
-        }
+        // [HttpGet]
+        // public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        // {
+        //     return await _context.Users.ToListAsync();
+        // }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
@@ -45,45 +45,45 @@ namespace backend.Controllers
 
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(Guid id, User user)
-        {
-            if (id != user.id)
-            {
-                return BadRequest();
-            }
+        // [HttpPut("{id}")]
+        // public async Task<IActionResult> PutUser(Guid id, User user)
+        // {
+        //     if (id != user.id)
+        //     {
+        //         return BadRequest();
+        //     }
 
-            _context.Entry(user).State = EntityState.Modified;
+        //     _context.Entry(user).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //     try
+        //     {
+        //         await _context.SaveChangesAsync();
+        //     }
+        //     catch (DbUpdateConcurrencyException)
+        //     {
+        //         if (!UserExists(id))
+        //         {
+        //             return NotFound();
+        //         }
+        //         else
+        //         {
+        //             throw;
+        //         }
+        //     }
 
-            return NoContent();
-        }
+        //     return NoContent();
+        // }
 
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
-        {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+        // [HttpPost]
+        // public async Task<ActionResult<User>> PostUser(User user)
+        // {
+        //     _context.Users.Add(user);
+        //     await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.id }, user);
-        }
+        //     return CreatedAtAction("GetUser", new { id = user.id }, user);
+        // }
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]

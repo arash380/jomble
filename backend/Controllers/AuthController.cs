@@ -19,9 +19,7 @@ namespace backend.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-
         private readonly JwtConfig _jwtConfig;
-
         private readonly JombleContext _context;
 
         public AuthController(
@@ -38,21 +36,26 @@ namespace backend.Controllers
         {
             if (ModelState.IsValid)
             {
-                // We can utilise the model
                 var existingUser = await _context.Users!.FirstOrDefaultAsync(u => u.Email == user.Email);
 
                 if (existingUser != null)
                 {
                     return BadRequest(new AuthResponse()
                     {
-                        Errors = new List<string>() {
-                                "Email already in use"
-                            },
+                        Errors = new List<string>() { "Email already in use" },
                         Success = false
                     });
                 }
 
-                var newUser = new User() { Email = user.Email, FirstName = user.FirstName, LastName = user.LastName, Password = user.Password };
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
+
+                var newUser = new User()
+                {
+                    Email = user.Email,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Password = hashedPassword
+                };
 
                 _context.Users!.Add(newUser);
                 await _context.SaveChangesAsync();
@@ -68,9 +71,7 @@ namespace backend.Controllers
 
             return BadRequest(new AuthResponse()
             {
-                Errors = new List<string>() {
-                        "Invalid payload"
-                    },
+                Errors = new List<string>() { "Invalid payload" },
                 Success = false
             });
         }
@@ -83,26 +84,11 @@ namespace backend.Controllers
             {
                 var existingUser = await _context.Users!.FirstOrDefaultAsync(u => u.Email == user.Email);
 
-                if (existingUser == null)
+                if (existingUser == null || !BCrypt.Net.BCrypt.Verify(user.Password, existingUser.Password))
                 {
                     return BadRequest(new AuthResponse()
                     {
-                        Errors = new List<string>() {
-                                "Invalid login request"
-                            },
-                        Success = false
-                    });
-                }
-
-                var isCorrectPassword = existingUser.Password == user.Password;
-
-                if (!isCorrectPassword)
-                {
-                    return BadRequest(new AuthResponse()
-                    {
-                        Errors = new List<string>() {
-                                "Invalid login request"
-                            },
+                        Errors = new List<string>() { "Invalid login request" },
                         Success = false
                     });
                 }
@@ -118,9 +104,7 @@ namespace backend.Controllers
 
             return BadRequest(new AuthResponse()
             {
-                Errors = new List<string>() {
-                        "Invalid payload"
-                    },
+                Errors = new List<string>() { "Invalid payload" },
                 Success = false
             });
         }
@@ -128,7 +112,6 @@ namespace backend.Controllers
         private string GenerateJwtToken(User user)
         {
             var jwtTokenHandler = new JwtSecurityTokenHandler();
-
             var key = Encoding.ASCII.GetBytes(_jwtConfig.Secret!);
 
             var tokenDescriptor = new SecurityTokenDescriptor

@@ -52,7 +52,7 @@ public class JombleContext : DbContext
             FirstName = "Arash",
             LastName = "Saadati",
             Email = "1@1.com",
-            Password = "password"
+            Password = BCrypt.Net.BCrypt.HashPassword("password")
            }
         };
         return users;
