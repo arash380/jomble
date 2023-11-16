@@ -1,7 +1,6 @@
 #nullable disable
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using backend.Models;
+using backend.Models.DTOs.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Cors;
@@ -22,16 +21,9 @@ namespace backend.Controllers
             _context = context;
         }
 
-        // GET: api/Users
-        // [HttpGet]
-        // public async Task<ActionResult<IEnumerable<User>>> GetUsers()
-        // {
-        //     return await _context.Users.ToListAsync();
-        // }
-
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(Guid id)
+        public async Task<ActionResult<UserResponse>> GetUser(Guid id)
         {
             var user = await _context.Users.FindAsync(id);
 
@@ -40,50 +32,18 @@ namespace backend.Controllers
                 return NotFound();
             }
 
-            return user;
+            // Map the User entity to UserDTO
+            var userResponse = new UserResponse
+            {
+                id = user.id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
+                // Add other properties as needed
+            };
+
+            return userResponse;
         }
-
-        // PUT: api/Users/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        // [HttpPut("{id}")]
-        // public async Task<IActionResult> PutUser(Guid id, User user)
-        // {
-        //     if (id != user.id)
-        //     {
-        //         return BadRequest();
-        //     }
-
-        //     _context.Entry(user).State = EntityState.Modified;
-
-        //     try
-        //     {
-        //         await _context.SaveChangesAsync();
-        //     }
-        //     catch (DbUpdateConcurrencyException)
-        //     {
-        //         if (!UserExists(id))
-        //         {
-        //             return NotFound();
-        //         }
-        //         else
-        //         {
-        //             throw;
-        //         }
-        //     }
-
-        //     return NoContent();
-        // }
-
-        // POST: api/Users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        // [HttpPost]
-        // public async Task<ActionResult<User>> PostUser(User user)
-        // {
-        //     _context.Users.Add(user);
-        //     await _context.SaveChangesAsync();
-
-        //     return CreatedAtAction("GetUser", new { id = user.id }, user);
-        // }
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
