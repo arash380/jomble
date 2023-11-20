@@ -1,3 +1,18 @@
 .root {
+  position: relative;
+}
+
+.avatar {
   background-color: var(--arash-primary-clr);
+}
+
+.status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  height: 13px;
+  width: 13px;
+  border-radius: 50%;
+  background-color: var(--toastify-color-success);
 }

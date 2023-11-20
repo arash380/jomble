@@ -1,6 +1,7 @@
 .root {
   width: 100vw;
   display: flex;
+  align-items: center;
   border-bottom: 1px grey solid;
   padding: 8px;
 }
@@ -9,8 +10,13 @@
   cursor: pointer;
 }
 
+.root > *:last-child {
+  margin-left: auto !important;
+}
+
 .dropdownMenu {
   color: var(--arash-primary-clr);
+  right: 0;
 }
 
 .iconButton {

@@ -1,6 +1,12 @@
 .root {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.initial {
   height: 35px;
-  aspect-ratio: 1/1;
+  width: 35px;
   background-color: var(--arash-primary-clr);
 
   display: grid;
@@ -8,4 +14,10 @@
   color: var(--arash-white-clr);
   font-weight: bold;
   font-size: 25px;
+}
+
+.text {
+  margin: 0;
+  color: var(--arash-primary-clr);
+  text-shadow: 0.5px 0.5px var(--arash-black-clr);
 }

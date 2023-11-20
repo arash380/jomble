@@ -25,11 +25,7 @@ const Login = () => {
 
   return (
     <>
-      <div className={classes.legoContainer}>
-        <Logo />
-        <h1>Jomble</h1>
-      </div>
-
+      <Logo />
       <form className={classes.form} onSubmit={onLogin}>
         <Input name="email" placeholder="Email" type="email" required />
         <Input name="password" placeholder="Password" type="password" required />

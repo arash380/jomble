@@ -27,11 +27,7 @@ const Register = () => {
 
   return (
     <>
-      <div className={classes.legoContainer}>
-        <Logo />
-        <h1>Jomble</h1>
-      </div>
-
+      <Logo />
       <form className={classes.form} onSubmit={onRegister}>
         <Input placeholder="First Name" name="firstName" />
         <Input placeholder="Last Name" name="lastName" />
