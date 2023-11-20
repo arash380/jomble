@@ -1,6 +1,9 @@
 .root {
   height: fit-content;
   min-height: 100vh;
-  background-color: var(--bg-clr);
+  background-color: var(--arash-bg-clr);
+}
+
+.content {
   padding: 1.5rem 2rem;
 }

@@ -1,0 +1,26 @@
+.root {
+  width: 100vw;
+  display: flex;
+  border-bottom: 1px grey solid;
+  padding: 8px;
+}
+
+.dropdownButton {
+  cursor: pointer;
+}
+
+.dropdownMenu {
+  color: var(--arash-primary-clr);
+}
+
+.iconButton {
+  color: var(--arash-black-clr);
+  cursor: pointer;
+  font-size: 48px;
+  border-radius: 50%;
+  padding: 6px;
+}
+
+.iconButton:hover {
+  background-color: rgba(60, 64, 67, 0.08);
+}
