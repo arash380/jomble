@@ -1,17 +1,21 @@
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import SideMenu from "../../../UI/SideMenu/SideMenu";
 import TopMenu from "../../../UI/TopMenu/TopMenu";
 import classes from "./MainLayout.module.css";
 
-const MainLayout = () => (
-  <div className={classes.root}>
-    {/* TODO: use google keep for (header + side), mobile? */}
-    <TopMenu />
-    <SideMenu />
-    <div className={classes.content}>
-      <Outlet />
+const MainLayout = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <div className={classes.root}>
+      <TopMenu toggleSideMenu={() => setIsMenuOpen((v) => !v)} />
+      <SideMenu isOpen={isMenuOpen} />
+      <div className={classes.content}>
+        <Outlet />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default MainLayout;

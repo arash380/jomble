@@ -1,17 +1,21 @@
 .root {
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   border-bottom: 1px grey solid;
   padding: 8px;
+  position: fixed;
+  background-color: var(--arash-white-clr);
+  z-index: 1;
 }
 
 .dropdownButton {
   cursor: pointer;
 }
 
-.root > *:last-child {
+.root > *:nth-last-child(2) {
   margin-left: auto !important;
+  margin-right: 20px;
 }
 
 .dropdownMenu {
@@ -25,6 +29,7 @@
   font-size: 48px;
   border-radius: 50%;
   padding: 6px;
+  margin-right: 20px;
 }
 
 .iconButton:hover {

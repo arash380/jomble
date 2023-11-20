@@ -2,8 +2,11 @@
   height: fit-content;
   min-height: 100vh;
   background-color: var(--arash-bg-clr);
+  overflow-x: hidden;
 }
 
 .content {
-  padding: 1.5rem 2rem;
+  position: absolute;
+  top: var(--top-menu-height);
+  left: calc(var(--left-menu-open-width) + 5px);
 }
