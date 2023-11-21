@@ -13,7 +13,7 @@ const menuItems = [
   { name: "TODO5", Icon: List, isActive: false },
 ];
 
-// TODO: mobile layout from keep
+// TODO: mobile layout from keep at600px
 const SideMenu = ({ isFullWidth }) => (
   <div className={`${classes.root} ${isFullWidth ? classes.open : classes.close}`}>
     {menuItems.map(({ name, Icon, isActive }, index) => (

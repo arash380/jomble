@@ -8,13 +8,13 @@ const MainLayout = () => {
   const { onChange: toggleSideMenu, isFullWidth } = useSideMenu();
 
   return (
-    <div className={classes.root}>
+    <>
       <TopMenu toggleSideMenu={toggleSideMenu} />
       <SideMenu isFullWidth={isFullWidth} />
       <div className={classes.content}>
         <Outlet />
       </div>
-    </div>
+    </>
   );
 };
 

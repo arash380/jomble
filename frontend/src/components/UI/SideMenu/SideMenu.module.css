@@ -3,6 +3,7 @@
   top: calc(var(--top-menu-height) + 4px);
   padding-top: 4px;
   width: var(--side-menu-width);
+  transition: all 1s;
 }
 
 .close .icon:hover {
@@ -26,6 +27,7 @@
   gap: 2rem;
   cursor: pointer;
   padding: 2px 0 2px 10px;
+  transition: all 1s;
 }
 
 .open .menuItem {
