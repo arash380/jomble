@@ -8,5 +8,5 @@
 .content {
   position: absolute;
   top: var(--top-menu-height);
-  left: calc(var(--left-menu-open-width) + 5px);
+  left: calc(var(--side-menu-width) + 10px);
 }

@@ -1,16 +1,16 @@
-import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import SideMenu from "../../../UI/SideMenu/SideMenu";
 import TopMenu from "../../../UI/TopMenu/TopMenu";
+import { useSideMenu } from "../../../../contexts/SideMenuContext";
 import classes from "./MainLayout.module.css";
 
 const MainLayout = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { onChange: toggleSideMenu, isFullWidth } = useSideMenu();
 
   return (
     <div className={classes.root}>
-      <TopMenu toggleSideMenu={() => setIsMenuOpen((v) => !v)} />
-      <SideMenu isOpen={isMenuOpen} />
+      <TopMenu toggleSideMenu={toggleSideMenu} />
+      <SideMenu isFullWidth={isFullWidth} />
       <div className={classes.content}>
         <Outlet />
       </div>

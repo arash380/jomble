@@ -2,7 +2,7 @@
   position: fixed;
   top: calc(var(--top-menu-height) + 4px);
   padding-top: 4px;
-  width: var(--left-menu-close-width);
+  width: var(--side-menu-width);
 }
 
 .close .icon:hover {
@@ -11,10 +11,6 @@
 
 .close .active .icon {
   background-color: rgba(92, 148, 167, 0.3) !important;
-}
-
-.open {
-  width: var(--left-menu-open-width);
 }
 
 .icon {

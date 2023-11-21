@@ -14,12 +14,12 @@ const menuItems = [
 ];
 
 // TODO: mobile layout from keep
-const SideMenu = ({ isOpen }) => (
-  <div className={`${classes.root} ${isOpen ? classes.open : classes.close}`}>
+const SideMenu = ({ isFullWidth }) => (
+  <div className={`${classes.root} ${isFullWidth ? classes.open : classes.close}`}>
     {menuItems.map(({ name, Icon, isActive }, index) => (
       <div key={index} className={`${classes.menuItem} ${isActive && classes.active}`}>
         <Icon className={classes.icon} />
-        {isOpen && <span>{name}</span>}
+        {isFullWidth && <span>{name}</span>}
       </div>
     ))}
   </div>
