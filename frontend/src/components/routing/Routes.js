@@ -6,9 +6,10 @@ import Register from "../pages/Auth/Register";
 import MainLayout from "./Layouts/MainLayout/MainLayout";
 import Login from "../pages/Auth/Login";
 import Home from "../pages/Home/Home";
+import Profile from "../pages/Profile/Profile";
 import rd from "./routeData";
 
-const { default: defaultRoute, login, wildCard, register } = rd;
+const { default: defaultRoute, login, wildCard, register, profile } = rd;
 
 const Routes = () => (
   <Router>
@@ -26,6 +27,7 @@ const Routes = () => (
       <Route element={<ProtectedRoute />}>
         <Route element={<MainLayout />}>
           <Route path={defaultRoute} element={<Home />} />
+          <Route path={profile} element={<Profile />} />
           <Route path={wildCard} element={<Navigate to={defaultRoute} />} />
         </Route>
       </Route>

@@ -3,6 +3,7 @@ const rd = Object.freeze({
   default: "/",
   login: "/login",
   register: "/register",
+  profile: "/profile",
 });
 
 export default rd;

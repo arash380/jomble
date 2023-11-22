@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Logo from "../Logo/Logo";
 import { DEFAULT_THEME, Dropdown, Switch, useDarkMode } from "arash-react-components";
 import UserAvatar from "../UserAvatar/UserAvatar";
 import { AccountBox, Logout, Menu } from "@mui/icons-material";
 import { useUser } from "../../../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
+import rd from "../../routing/routeData";
 import classes from "./TopMenu.module.css";
 
 const dropdownItems = [
@@ -11,7 +13,6 @@ const dropdownItems = [
     Icon: AccountBox,
     iconType: "mui",
     title: "Profie",
-    onClick: () => console.log("profile"),
   },
   {
     Icon: Logout,
@@ -27,22 +28,19 @@ const switchDetails = [
 
 const TopMenu = ({ toggleSideMenu }) => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const { darkMode, toggleDarkMode } = useDarkMode();
+  const { darkMode, setDarkMode } = useDarkMode();
   const { logout } = useUser();
+  const navigate = useNavigate();
+  dropdownItems[0].onClick = () => navigate(rd.profile);
   dropdownItems[1].onClick = logout;
 
-  useEffect(() => console.log(darkMode), [darkMode]);
   return (
     <div className={classes.root}>
       <Menu className={classes.iconButton} onClick={toggleSideMenu} />
 
       <Logo />
 
-      {/* TODO: switch bg colors should change? fixed colors? */}
-      {/* TODO: switch thumb color */}
-      {/* TODO: make it work with local storage to store preference */}
-      {/* <Switch details={switchDetails} checked={darkmode} onChange={setDarkmode} /> */}
-      <button onClick={toggleDarkMode}>TEST</button>
+      <Switch details={switchDetails} checked={darkMode} onChange={setDarkMode} />
 
       <Dropdown
         show={showDropdown}
