@@ -11,7 +11,7 @@
 
   display: grid;
   place-items: center;
-  color: var(--arash-white-clr);
+  color: var(--arash-white-f-clr);
   font-weight: bold;
   font-size: 25px;
 }
@@ -19,5 +19,5 @@
 .text {
   margin: 0;
   color: var(--arash-primary-clr);
-  text-shadow: 0.5px 0.5px var(--arash-black-clr);
+  text-shadow: 0.5px 0.5px var(--arash-black-f-clr);
 }

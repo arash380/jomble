@@ -9,6 +9,7 @@
   padding: 0.5rem 1rem;
   border-radius: 5px;
   border: calc(var(--arash-border-sz) / 2) solid var(--arash-primary-clr);
+  color: var(--arash-black-clr);
 }
 
 .form > button {

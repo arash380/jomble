@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../Logo/Logo";
-import { DEFAULT_THEME, Dropdown, Switch } from "arash-react-components";
+import { DEFAULT_THEME, Dropdown, Switch, useDarkMode } from "arash-react-components";
 import UserAvatar from "../UserAvatar/UserAvatar";
 import { AccountBox, Logout, Menu } from "@mui/icons-material";
 import { useUser } from "../../../contexts/UserContext";
@@ -27,20 +27,22 @@ const switchDetails = [
 
 const TopMenu = ({ toggleSideMenu }) => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [darkmode, setDarkmode] = useState(false);
+  const { darkMode, toggleDarkMode } = useDarkMode();
   const { logout } = useUser();
   dropdownItems[1].onClick = logout;
 
+  useEffect(() => console.log(darkMode), [darkMode]);
   return (
     <div className={classes.root}>
       <Menu className={classes.iconButton} onClick={toggleSideMenu} />
 
       <Logo />
 
-      {/* TODO: make dark mode work */}
-      {/* TODO: make a context for this */}
+      {/* TODO: switch bg colors should change? fixed colors? */}
+      {/* TODO: switch thumb color */}
       {/* TODO: make it work with local storage to store preference */}
-      <Switch details={switchDetails} checked={darkmode} onChange={setDarkmode} />
+      {/* <Switch details={switchDetails} checked={darkmode} onChange={setDarkmode} /> */}
+      <button onClick={toggleDarkMode}>TEST</button>
 
       <Dropdown
         show={showDropdown}

@@ -5,7 +5,7 @@
   width: var(--side-menu-width);
   height: calc(100% - var(--top-menu-height));
   background-color: var(--arash-bg-clr);
-  transition: all 0.4s;
+  transition: width 0.4s;
   z-index: 1;
 }
 
@@ -30,7 +30,7 @@
   gap: 2rem;
   cursor: pointer;
   padding: 2px 0 2px 10px;
-  transition: all 0.4s;
+  transition: width 0.4s;
 }
 
 .open .menuItem {

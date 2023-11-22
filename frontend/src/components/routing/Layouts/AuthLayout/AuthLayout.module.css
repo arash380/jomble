@@ -26,7 +26,7 @@
 }
 
 .left {
-  background-color: var(--arash-white-clr);
+  background-color: var(--arash-bg-clr);
   flex-basis: 33.333%;
   padding: 1.5rem 2rem;
 
@@ -40,7 +40,7 @@
   flex: 1;
   background-image: url(../../../../assets/images/auth-bg2.jpg);
   background-size: cover;
-  color: var(--arash-white-clr);
+  color: var(--arash-white-f-clr);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,5 +58,5 @@
 
 .right strong {
   font-weight: 900;
-  text-shadow: 2px 2px var(--arash-black-clr);
+  text-shadow: 2px 2px var(--arash-black-f-clr);
 }

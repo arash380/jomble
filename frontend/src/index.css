@@ -5,6 +5,7 @@ body {
   -moz-osx-font-smoothing: grayscale !important;
 
   background-color: var(--arash-bg-clr) !important;
+  color: var(--arash-black-clr) !important;
   overflow-x: hidden !important;
 }
 
