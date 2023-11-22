@@ -1,9 +1,17 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import useWindowWidth from "../hooks/useWindowWidth";
 
-const rootElement = document.querySelector(":root");
+const root = document.querySelector(":root").style;
 const FULL_WIDTH = "210px";
 const MINIMIZED_WIDTH = "64px";
+const BREAKPOINT_KEY = "--mobile-breakpoint";
 const SIDE_MENU_KEY = "--side-menu-width";
+const TAKEN_SPACE_KEY = "--taken-space-by-menu";
+
+const setProperties = (sideMenu, takenSpace) => {
+  root.setProperty(SIDE_MENU_KEY, sideMenu);
+  root.setProperty(TAKEN_SPACE_KEY, takenSpace);
+};
 
 const SideMenuContext = createContext();
 
@@ -13,11 +21,17 @@ export const useSideMenu = () => {
 
 export const SideMenuProvider = ({ children }) => {
   const [isFullWidth, setIsFullWidth] = useState(false);
+  const currentWidth = useWindowWidth();
 
   useEffect(() => {
-    if (isFullWidth) rootElement.style.setProperty(SIDE_MENU_KEY, FULL_WIDTH);
-    else rootElement.style.setProperty(SIDE_MENU_KEY, MINIMIZED_WIDTH);
-  }, [isFullWidth]);
+    const BREAKPOINT = parseInt(getComputedStyle(document.documentElement).getPropertyValue(BREAKPOINT_KEY));
+
+    if (currentWidth > BREAKPOINT) {
+      setProperties(isFullWidth ? FULL_WIDTH : MINIMIZED_WIDTH, isFullWidth ? FULL_WIDTH : MINIMIZED_WIDTH);
+    } else {
+      setProperties(isFullWidth ? FULL_WIDTH : MINIMIZED_WIDTH, MINIMIZED_WIDTH);
+    }
+  }, [isFullWidth, currentWidth]);
 
   const onChange = () => setIsFullWidth((prev) => !prev);
 

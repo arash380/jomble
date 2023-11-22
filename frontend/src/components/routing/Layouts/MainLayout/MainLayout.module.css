@@ -1,5 +1,5 @@
 .content {
   position: absolute;
   top: var(--top-menu-height);
-  left: calc(var(--side-menu-width) + 10px);
+  left: calc(var(--taken-space-by-menu) + 10px);
 }

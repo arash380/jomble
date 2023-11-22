@@ -3,7 +3,10 @@
   top: calc(var(--top-menu-height) + 4px);
   padding-top: 4px;
   width: var(--side-menu-width);
-  transition: all 1s;
+  height: calc(100% - var(--top-menu-height));
+  background-color: var(--arash-bg-clr);
+  transition: all 0.4s;
+  z-index: 1;
 }
 
 .close .icon:hover {
@@ -27,7 +30,7 @@
   gap: 2rem;
   cursor: pointer;
   padding: 2px 0 2px 10px;
-  transition: all 1s;
+  transition: all 0.4s;
 }
 
 .open .menuItem {
@@ -40,4 +43,11 @@
 
 .open .active {
   background-color: rgba(92, 148, 167, 0.3) !important;
+}
+
+/* var(--mobile-breakpoint) won't work with media queries */
+@media only screen and (max-width: 600px) {
+  .open {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
 }
